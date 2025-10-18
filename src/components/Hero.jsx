@@ -11,7 +11,9 @@ function Hero() {
                     <h1 className="text-5xl font-bold mb-2">Welcome to zyra</h1>
                     <p className="text-xl text-stone-700 mb-4">Share a fact today!</p>
                     <Link to="/log-in">
-                        <button className="px-4 py-2 rounded-lg bg-black text-white hover:bg-stone-800">Get Started</button>
+                        <button className="px-4 py-2 rounded-lg bg-black text-white hover:bg-stone-800">
+                            Get Started
+                        </button>
                     </Link>
                 </div>
             </section>

@@ -13,12 +13,12 @@ function Navbar() {
 
                 {/* Navigation Links */}
                 <ul className="flex gap-6 items-center">
-                    <Link to="/signup" className="no-underline">
+                    <Link to="/sign-up" className="no-underline">
                         <li className="text-gray-800 font-medium hover:border-b-2 hover:border-gray-800 pb-1 transition cursor-pointer">
                             SIGN UP
                         </li>
                     </Link>
-                    <Link to="/login" className="no-underline">
+                    <Link to="/log-in" className="no-underline">
                         <li className="text-gray-800 font-medium hover:border-b-2 hover:border-gray-800 pb-1 transition cursor-pointer">
                             LOG IN
                         </li>
