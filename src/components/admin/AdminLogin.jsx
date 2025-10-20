@@ -3,7 +3,7 @@ import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { apiClient } from "../../api/client";
 
-function Login() {
+function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,6 @@ function Login() {
       setLoading(false);
     }
   };
-
   return (
     <>
       <section className="flex min-h-screen flex-col lg:flex-row items-center justify-center px-4 py-8 lg:py-0 bg-[#e2a9f1] gap-8 lg:gap-16">
@@ -45,11 +44,8 @@ function Login() {
             alt="Logo"
           />
           <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 lg:mb-4">
-            Welcome back to zyra!
+            Welcome admin!
           </h1>
-          <p className="text-sm lg:text-base text-gray-700">
-            Continue sharing or rating other facts
-          </p>
         </div>
 
         {/* Form Section */}
@@ -99,22 +95,10 @@ function Login() {
               {loading ? "Logging in..." : "Login"}
             </button>
           </form>
-
-          <div className="text-center mt-6">
-            <p className="text-gray-700 text-sm">
-              Don't have an account?{" "}
-              <Link
-                to="/sign-up"
-                className="text-black font-semibold hover:underline"
-              >
-                Sign up
-              </Link>
-            </p>
-          </div>
         </div>
       </section>
     </>
   );
 }
 
-export default Login;
+export default AdminLogin;

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo.png";
 import { apiClient } from "../../api/client";
 
-function Login() {
+function AdminReg() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -16,8 +18,10 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await apiClient.post("/auth/signin", {
+      const response = await apiClient.post("/auth/signup", {
         email,
+        firstName,
+        lastName,
         password,
       });
 
@@ -27,13 +31,12 @@ function Login() {
 
       navigate("/dashboard");
     } catch (err) {
-      console.error("Login error:", err);
-      setError(err.message || "Login failed. Please try again.");
+      console.error("Signup error:", err);
+      setError(err.message || "Signup failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <>
       <section className="flex min-h-screen flex-col lg:flex-row items-center justify-center px-4 py-8 lg:py-0 bg-[#e2a9f1] gap-8 lg:gap-16">
@@ -42,14 +45,11 @@ function Login() {
           <img
             src={logo}
             className="h-40 w-48 lg:h-64 lg:w-72 mb-6 lg:mb-8"
-            alt="Logo"
+            alt="Zyra Logo"
           />
           <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-2 lg:mb-4">
-            Welcome back to zyra!
+            Welcome to zyra!
           </h1>
-          <p className="text-sm lg:text-base text-gray-700">
-            Continue sharing or rating other facts
-          </p>
         </div>
 
         {/* Form Section */}
@@ -63,16 +63,46 @@ function Login() {
 
             <div className="mb-4">
               <label className="block text-gray-800 font-medium mb-2 text-sm">
+                First Name
+              </label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="Enter your first name"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition text-sm"
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-800 font-medium mb-2 text-sm">
+                Last Name
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Enter your last name"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition text-sm"
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-800 font-medium mb-2 text-sm">
                 Email
               </label>
               <input
                 type="email"
-                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition text-sm"
-                required
                 disabled={loading}
+                required
               />
             </div>
 
@@ -82,12 +112,12 @@ function Login() {
               </label>
               <input
                 type="password"
-                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition text-sm"
-                required
                 disabled={loading}
+                required
               />
             </div>
 
@@ -96,25 +126,13 @@ function Login() {
               className="w-full bg-black text-white font-semibold py-2 rounded-lg hover:bg-gray-800 active:bg-gray-900 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm"
               disabled={loading}
             >
-              {loading ? "Logging in..." : "Login"}
+              {loading ? "Creating your account..." : "Create Account"}
             </button>
           </form>
-
-          <div className="text-center mt-6">
-            <p className="text-gray-700 text-sm">
-              Don't have an account?{" "}
-              <Link
-                to="/sign-up"
-                className="text-black font-semibold hover:underline"
-              >
-                Sign up
-              </Link>
-            </p>
-          </div>
         </div>
       </section>
     </>
   );
 }
 
-export default Login;
+export default AdminReg;
