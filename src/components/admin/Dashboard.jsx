@@ -1,12 +1,12 @@
 import React from "react";
+import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
-import Footer from "../landing_page/Footer";
-import Main from "./Main";
 
 function Dashboard() {
   return (
     <>
-      <Main />
+      <Navbar />
+      <Sidebar />
     </>
   );
 }

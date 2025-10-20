@@ -1,15 +1,15 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL;;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 export const apiClient = {
   async get(endpoint) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    if (token) headers['Authorization'] = `Bearer ${token}`;
+    if (token) headers["Authorization"] = `Bearer ${token}`;
 
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      method: 'GET',
+      method: "GET",
       headers,
     });
 
@@ -21,14 +21,14 @@ export const apiClient = {
   },
 
   async post(endpoint, data) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    if (token) headers['Authorization'] = `Bearer ${token}`;
+    if (token) headers["Authorization"] = `Bearer ${token}`;
 
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      method: 'POST',
+      method: "POST",
       headers,
       body: JSON.stringify(data),
     });
@@ -41,14 +41,14 @@ export const apiClient = {
   },
 
   async put(endpoint, data) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    if (token) headers['Authorization'] = `Bearer ${token}`;
+    if (token) headers["Authorization"] = `Bearer ${token}`;
 
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      method: 'PUT',
+      method: "PUT",
       headers,
       body: JSON.stringify(data),
     });
@@ -61,14 +61,14 @@ export const apiClient = {
   },
 
   async delete(endpoint) {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const headers = {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     };
-    if (token) headers['Authorization'] = `Bearer ${token}`;
+    if (token) headers["Authorization"] = `Bearer ${token}`;
 
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers,
     });
 

@@ -4,12 +4,12 @@ import Hero from "./Hero";
 import Footer from "./Footer";
 
 function Home() {
-    return (
-        <>
-            <Navbar />
-            <Hero />
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <Footer />
+    </>
+  );
 }
 export default Home;
