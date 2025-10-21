@@ -25,7 +25,7 @@ function AdminLogin() {
         localStorage.setItem("token", response.access_token);
       }
 
-      navigate("/dashboard");
+      navigate("/admin/dashboard");
     } catch (err) {
       console.error("Login error:", err);
       setError(err.message || "Login failed. Please try again.");

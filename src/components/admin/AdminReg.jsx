@@ -18,7 +18,7 @@ function AdminReg() {
     setLoading(true);
 
     try {
-      const response = await apiClient.post("/auth/signup", {
+      const response = await apiClient.post("/auth/admin/register", {
         email,
         firstName,
         lastName,
@@ -29,7 +29,7 @@ function AdminReg() {
         localStorage.setItem("token", response.access_token);
       }
 
-      navigate("/dashboard");
+      navigate("/admin/dashboard");
     } catch (err) {
       console.error("Signup error:", err);
       setError(err.message || "Signup failed. Please try again.");

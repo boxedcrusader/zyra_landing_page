@@ -3,10 +3,12 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./components/landing_page/Home";
 import Login from "./components/landing_page/Login";
 import Signup from "./components/landing_page/Signup";
-import { ProtectedRoute } from "./components/ProjectedRoute";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import Dashboard from "./components/app/Dashboard";
 import AdminLogin from "./components/admin/AdminLogin";
 import AdminReg from "./components/admin/AdminReg";
+import AdminDashboard from "./components/admin/Dashboard";
+import Topics from "./components/admin/topics/Topics";
 
 function App() {
   return (
@@ -15,13 +17,22 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/log-in" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
-        <Route path="/adminlogin" element={<AdminLogin />} />
-        <Route path="/adminreg" element={<AdminReg />} />
+        <Route path="/topics" element={<Topics />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/register" element={<AdminReg />} />
         <Route
-          path="/dashboard"
+          path="/user/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute requiredRole="USER">
               <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute requiredRole="ADMIN">
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />

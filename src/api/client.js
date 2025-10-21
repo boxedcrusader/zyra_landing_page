@@ -40,6 +40,26 @@ export const apiClient = {
     return response.json();
   },
 
+  async patch(endpoint, data) {
+    const token = localStorage.getItem("token");
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      method: "PATCH",
+      headers,
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || `HTTP ${response.status}`);
+    }
+    return response.json();
+  },
+
   async put(endpoint, data) {
     const token = localStorage.getItem("token");
     const headers = {
