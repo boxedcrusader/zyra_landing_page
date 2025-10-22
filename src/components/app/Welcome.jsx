@@ -20,8 +20,8 @@ function Welcome() {
   return (
     <>
       <section>
-        <div className="p-8 border-b-black">
-          <h1 className="p-6 text-5xl">Welcome, {userName || "User"}</h1>
+        <div className="border-b-black mb-10 text-[#e2a9f1]">
+          <h1 className="px-8 text-5xl">Welcome, {userName || "User"}</h1>
         </div>
       </section>
     </>

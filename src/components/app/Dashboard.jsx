@@ -1,6 +1,4 @@
 import React from "react";
-import Sidebar from "./Sidebar";
-import Footer from "../landing_page/Footer";
 import Main from "./Main";
 
 function Dashboard() {

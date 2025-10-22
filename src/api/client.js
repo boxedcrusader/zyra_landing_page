@@ -99,3 +99,13 @@ export const apiClient = {
     return response.json();
   },
 };
+
+export const voteOnFact = async (factId, voteType, token) => {
+  return apiClient.post(
+    `/votes/${factId}`,
+    { voteType },
+    {
+      headers: { Authorization: `Bearer ${token}` },
+    }
+  );
+};
