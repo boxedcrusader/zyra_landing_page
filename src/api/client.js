@@ -14,8 +14,15 @@ export const apiClient = {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || `HTTP ${response.status}`);
+      let errorMessage = `HTTP ${response.status}`;
+      try {
+        const error = await response.json();
+        errorMessage = error.message || JSON.stringify(error);
+      } catch (e) {
+        // If JSON parsing fails, use status text
+        errorMessage = response.statusText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
     return response.json();
   },
@@ -34,8 +41,15 @@ export const apiClient = {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || `HTTP ${response.status}`);
+      let errorMessage = `HTTP ${response.status}`;
+      try {
+        const error = await response.json();
+        console.error("Backend error response:", error); // Debug log
+        errorMessage = error.message || JSON.stringify(error);
+      } catch (e) {
+        errorMessage = response.statusText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
     return response.json();
   },
@@ -54,8 +68,14 @@ export const apiClient = {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || `HTTP ${response.status}`);
+      let errorMessage = `HTTP ${response.status}`;
+      try {
+        const error = await response.json();
+        errorMessage = error.message || JSON.stringify(error);
+      } catch (e) {
+        errorMessage = response.statusText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
     return response.json();
   },
@@ -74,8 +94,14 @@ export const apiClient = {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || `HTTP ${response.status}`);
+      let errorMessage = `HTTP ${response.status}`;
+      try {
+        const error = await response.json();
+        errorMessage = error.message || JSON.stringify(error);
+      } catch (e) {
+        errorMessage = response.statusText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
     return response.json();
   },
@@ -93,19 +119,15 @@ export const apiClient = {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || `HTTP ${response.status}`);
+      let errorMessage = `HTTP ${response.status}`;
+      try {
+        const error = await response.json();
+        errorMessage = error.message || JSON.stringify(error);
+      } catch (e) {
+        errorMessage = response.statusText || errorMessage;
+      }
+      throw new Error(errorMessage);
     }
     return response.json();
   },
-};
-
-export const voteOnFact = async (factId, voteType, token) => {
-  return apiClient.post(
-    `/votes/${factId}`,
-    { voteType },
-    {
-      headers: { Authorization: `Bearer ${token}` },
-    }
-  );
 };

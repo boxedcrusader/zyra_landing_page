@@ -29,7 +29,7 @@ function Signup() {
         localStorage.setItem("token", response.access_token);
       }
 
-      navigate("/dashboard");
+      navigate("/user/dashboard");
     } catch (err) {
       console.error("Signup error:", err);
       setError(err.message || "Signup failed. Please try again.");
